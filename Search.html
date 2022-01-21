@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="news.css">
+</head>
+<body>
+    <div id="div_Nav"></div>
+    <div id="News"></div>
+</body>
+</html>
+<script type="module">
+    let name=localStorage.getItem('NSearch');
+    let key="1f03a19b715a441ab2c899f3e624f0a6"
+   
+    let url=`https://newsapi.org/v2/everything?q=${name}&from=2021-12-13&sortBy=popularity&apiKey=${key}`
+    // Import function
+    import Navbar from './components/Navbar.js';
+    import {getdata,append} from './components/getdata.js'
+    div_Nav.innerHTML=Navbar();
+    let resonse=await getdata(url)
+    let d=resonse.articles;
+    console.log(resonse.articles)
+    append(d,News)
+</script>

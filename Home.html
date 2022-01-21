@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="news.css">
+</head>
+<body>
+    <div id="div_Nav"></div>
+    <div id="News"></div>
+</body>
+</html>
+<script type="module">
+    let key="1f03a19b715a441ab2c899f3e624f0a6"
+    let url=`https://newsapi.org/v2/top-headlines?country=us&apiKey=${key}`
+let flag=0
+    // Import function
+    import Navbar from './components/Navbar.js';
+    import {getdata,append} from './components/getdata.js'
+    div_Nav.innerHTML=Navbar();
+    let resonse=await getdata(url)
+    let d=resonse.articles;
+    console.log(resonse.articles)
+    append(d,News)
+    document.getElementById('next').addEventListener('click',()=>{
+        console.log("data")
+        location.href="news.html"
+    })
+    document.getElementById('submit').addEventListener('click',()=>{
+        let input=document.getElementById('search').value;
+        localStorage.setItem('NSearch',input)
+        location.href="Search.html";
+    })
+    // Debounce function
+    // let bounce;
+    // document.getElementById('search').addEventListener('input',()=>{
+    //     clearTimeout(bounce)
+    //  let bounce=  setTimeout(()=>{
+    // console.log("dfd")
+    //    },1000) 
+    // })
+
+</script>
